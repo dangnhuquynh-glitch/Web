@@ -20,6 +20,13 @@ Toàn bộ JavaScript và các lệnh `google.script.run` (`api`, …) **giữ n
 - Tab quản lý, nhãn trạng thái (lozenge), tiêu đề bảng in hoa nhỏ, hover cho dòng bảng.
 - Ô nhập có viền focus xanh dương rõ ràng; trên điện thoại nút chế độ kéo full chiều ngang.
 
+## Điện thoại & máy tính
+Đã kiểm tra mọi màn hình (Đăng ký ca, 4 tab Tồn kho, 7 tab Quản lý và các tab con) ở 360, 390, 768, 1024 và 1440px: không tràn ngang, không có nút quá nhỏ để chạm.
+
+- **Điện thoại:** thanh tab Quản lý thành 1 hàng vuốt ngang; nút chế độ trải đầy chiều ngang; nút cao ≥ 40px dễ bấm; ô thống kê tự thu nhỏ số tiền; bảng lớn (lịch tháng, lương) vuốt ngang bên trong khung, cột tên giữ cố định.
+- **Máy tính:** nội dung rộng tối đa 1200px; thanh tab Quản lý dính trên cùng khi cuộn.
+- Server đã gắn sẵn thẻ viewport (`addMetaTag`) nên không cần sửa Code.gs.
+
 ## Triển khai
 1. Mở dự án Apps Script → file HTML đang được `doGet` trả về.
 2. Dán nội dung `Index.html` thay thế → **Deploy → Manage deployments → Edit → New version**.
