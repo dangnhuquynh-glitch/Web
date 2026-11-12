@@ -835,6 +835,97 @@ kbd{font:600 12px/1 var(--f-body);border:1px solid var(--line);border-bottom-wid
 .toast.err::before{content:"!";font-weight:700}
 .only-desk{display:none}
 @media (hover:hover) and (min-width:900px){.only-desk{display:initial}}
+
+/* ===== Chấm công Wi-Fi ===== */
+.modes .sh{display:none}
+.modes button{white-space:nowrap}
+@media (max-width:480px){.modes .lg{display:none}.modes .sh{display:inline}.modes button svg{display:none}.modes button{padding:7px 4px!important;font-size:13px!important;flex:1 1 auto!important;min-width:0}}
+@media (max-width:370px){.modes button{font-size:12.5px!important;letter-spacing:-.01em}}
+.cc-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start;margin-top:8px}
+@media (max-width:820px){.cc-grid{grid-template-columns:1fr}}
+.cc-side{display:grid;gap:16px}
+.cc-main{padding:24px;display:grid;gap:18px;justify-items:center;text-align:center}
+.cc-clock{font-size:clamp(44px,11vw,64px);font-weight:700;letter-spacing:-.03em;line-height:1}
+.cc-time .muted{margin-top:6px;font-weight:500}
+.cc-net{width:100%;display:flex;gap:12px;align-items:center;text-align:left;border-radius:var(--r);padding:12px 14px;background:var(--line-2)}
+.cc-net .t{display:block;font-size:14.5px;font-weight:700}
+.cc-net .d{display:block;font-size:13px;color:var(--ink-2)}
+.cc-net .d b{color:var(--ink)}
+.cc-net div{flex:1;min-width:0}
+.cc-net .btn{flex:none}
+.cc-wi{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--paper)}
+.cc-wi svg{width:20px;height:20px}
+.cc-net.ok{background:var(--accent-soft)} .cc-net.ok .cc-wi,.cc-net.ok .t{color:var(--ok)}
+.cc-net.bad{background:var(--le-soft)} .cc-net.bad .cc-wi,.cc-net.bad .t{color:var(--bad)}
+.cc-net.warn{background:var(--sang-soft)} .cc-net.warn .cc-wi,.cc-net.warn .t{color:var(--warn)}
+@media (max-width:480px){.cc-net{flex-wrap:wrap}.cc-net .btn{width:100%;justify-content:center;background:var(--paper)}}
+.cc-alert{width:100%;text-align:left;font-size:13.5px;background:var(--sang-soft);border-left:4px solid var(--warn);border-radius:var(--r-sm);padding:10px 12px}
+.cc-btn{width:min(260px,100%);aspect-ratio:1;border-radius:50%;border:0;display:grid;place-content:center;justify-items:center;gap:4px;font-size:24px;font-weight:700;color:#fff;
+  box-shadow:0 10px 30px -8px var(--shade),inset 0 -4px 0 rgba(0,0,0,.12);transition:transform .12s,box-shadow .12s,filter .12s;-webkit-tap-highlight-color:transparent}
+.cc-btn.vao{background:radial-gradient(circle at 30% 25%,#2ea56f,#1F845A 60%,#17694a)}
+.cc-btn.ra{background:radial-gradient(circle at 30% 25%,#e8833a,#C25100 60%,#9c4100)}
+.cc-btn small{font-size:13px;font-weight:500;opacity:.9}
+.cc-bi{font-size:30px;line-height:1;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;margin-bottom:4px}
+.cc-btn:not(:disabled):hover{filter:brightness(1.05);transform:translateY(-1px)}
+.cc-btn:not(:disabled):active{transform:scale(.97)}
+.cc-btn:disabled{background:var(--line);color:var(--ink-2);box-shadow:none;cursor:not-allowed}
+.cc-btn:disabled .cc-bi{background:var(--line-2)}
+.cc-btn.busy{opacity:.7;cursor:progress}
+@media (max-width:480px){.cc-btn{width:min(220px,100%)}}
+.cc-now{display:flex;align-items:center;gap:8px;font-size:14px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 var(--ok);animation:pulse 1.8s infinite;flex:none;display:inline-block}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 60%,transparent)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+.cc-today,.cc-week{padding:16px 18px}
+.cc-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.cc-h h3{font-size:16px}
+.cc-tl{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.cc-tl li{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;font-size:14px}
+.cc-pt{font-weight:700;font-variant-numeric:tabular-nums;padding:3px 8px;border-radius:4px}
+.cc-pt.in{background:var(--accent-soft);color:var(--ok)} .cc-pt.out{background:var(--sang-soft);color:var(--sang)}
+.cc-ln{height:2px;background:var(--line);border-radius:2px}
+.cc-g{color:var(--ink-2);font-size:13px;min-width:70px;text-align:right}
+.cc-bars{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;align-items:end}
+.cc-bars>div{display:grid;gap:4px;justify-items:center}
+.cc-bars .b{width:100%;max-width:34px;height:84px;background:var(--line-2);border-radius:4px;display:flex;align-items:flex-end;overflow:hidden}
+.cc-bars .b i{display:block;width:100%;background:var(--accent);border-radius:4px 4px 0 0;min-height:0}
+.cc-bars .v{font-size:11px;color:var(--ink-2);height:14px}
+.cc-bars .l{font-size:12px;font-weight:600;color:var(--ink-2)}
+.cc-bars .td .l{color:var(--accent)} .cc-bars .td .b{outline:2px solid var(--accent);outline-offset:1px}
+/* Quản lý */
+.cc-seg{display:flex;background:var(--line-2);border-radius:var(--r);padding:3px;gap:2px}
+.cc-seg button{border:0;background:none;border-radius:var(--r-sm);padding:6px 12px;font-weight:600;font-size:13.5px;color:var(--ink-2)}
+.cc-seg button[aria-pressed="true"]{background:var(--paper);color:var(--accent);box-shadow:var(--e1)}
+.cc-seg.wide button{flex:1;padding:9px}
+.cc-setup{display:grid;gap:6px;background:var(--info-soft);border-left:4px solid var(--trua);border-radius:var(--r);padding:14px 16px;margin-bottom:6px}
+.cc-setup .btn{justify-self:start}
+.cc-live{display:flex;flex-wrap:wrap;gap:8px;margin:-4px 0 6px}
+.cc-live>span{display:inline-flex;align-items:center;gap:8px;background:var(--paper);box-shadow:var(--e1);border-radius:999px;padding:6px 12px;font-size:13px}
+.cc-tb{min-width:560px}
+.cc-tb tbody tr{cursor:pointer}
+.cc-tb tr.cont td{border-top:0}
+.cc-tag{font-size:10.5px;font-weight:700;text-transform:uppercase;background:var(--hv-soft);color:var(--hv);border-radius:3px;padding:1px 5px;margin-left:4px}
+.cc-miss{color:var(--warn);font-weight:600;font-size:12.5px}
+.cc-on{color:var(--ok);font-weight:600}
+.btn.sm{min-height:30px!important;padding:4px 10px;font-size:13px}
+.cc-det{margin-top:16px;padding:0}
+.cc-det summary{cursor:pointer;padding:14px 16px;list-style-position:inside}
+.cc-det ul{margin:0;padding:0 16px 14px 34px;display:grid;gap:4px;font-size:13.5px}
+.cc-set-b{display:grid;gap:16px;padding:0 16px 16px}
+.cc-ips{display:flex;flex-wrap:wrap;gap:6px;min-height:32px;align-items:center}
+.cc-ip{display:inline-flex;align-items:center;gap:4px;background:var(--accent-soft);color:var(--ok);font-weight:600;font-size:13px;border-radius:4px;padding:4px 4px 4px 10px}
+.cc-ip button{border:0;background:none;color:inherit;font-size:18px;width:32px;height:32px;border-radius:4px;line-height:1}
+.cc-ip button:hover{background:rgba(0,0,0,.08)}
+.cc-chk{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.cc-chk input{width:18px;height:18px;margin-top:2px;accent-color:var(--accent);flex:none}
+.cc-chk span span{display:block}
+.cc-devs{display:grid;gap:0;border:1px solid var(--line-2);border-radius:var(--r-sm)}
+.cc-devs>div{display:flex;justify-content:space-between;align-items:center;padding:6px 12px;border-bottom:1px solid var(--line-2);font-size:14px;min-height:42px}
+.cc-devs>div:last-child{border-bottom:0}
+.cc-edit{display:grid}
+.cc-edit>div{display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line-2)}
+.cc-edit>div:last-child{border-bottom:0}
+.cc-edit>div.huy b,.cc-edit>div.huy .code{text-decoration:line-through;opacity:.5}
 </style>
 </head>
 <body>
@@ -846,13 +937,15 @@ kbd{font:600 12px/1 var(--f-body);border:1px solid var(--line);border-bottom-wid
       <div><b>Lành</b><small>Lịch làm part-time</small></div>
     </div>
     <nav class="modes" aria-label="Chế độ">
-      <button id="mStaff" aria-pressed="true">Đăng ký ca</button>
-      <button id="mKho" aria-pressed="false">Tồn kho</button>
-      <button id="mAdmin" aria-pressed="false"><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M4 7V5a4 4 0 1 1 8 0v2h1v8H3V7h1Zm2 0h4V5a2 2 0 1 0-4 0v2Z"/></svg>Quản lý</button>
+      <button id="mCC" aria-pressed="false"><span class="lg">Chấm công</span><span class="sh">Chấm công</span></button>
+      <button id="mStaff" aria-pressed="true"><span class="lg">Đăng ký ca</span><span class="sh">Đăng ký</span></button>
+      <button id="mKho" aria-pressed="false"><span class="lg">Tồn kho</span><span class="sh">Kho</span></button>
+      <button id="mAdmin" aria-pressed="false"><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M4 7V5a4 4 0 1 1 8 0v2h1v8H3V7h1Zm2 0h4V5a2 2 0 1 0-4 0v2Z"/></svg><span class="lg">Quản lý</span><span class="sh">Quản lý</span></button>
     </nav>
   </div>
 </header>
 <div id="demo" class="demo" hidden>Bản xem thử. Mật khẩu quản lý demo: <b>lanh2026</b> · PIN Trưởng phòng demo: <b>2468</b>. Thao tác ở đây không ghi vào Google Sheet.</div>
+<main class="wrap" id="cc" hidden></main>
 <main class="wrap" id="staff"></main>
 <main class="wrap" id="kho" hidden></main>
 <main class="wrap" id="admin" hidden></main>
@@ -4282,6 +4375,427 @@ function wkLabelFull(mon) {
 }
 
 
+/* ===== Chấm công Wi-Fi — lõi dùng chung (máy chủ Apps Script + bản demo) ===== */
+function lanhChamCongCore(io) {
+  var WIFI_MAC_DINH = 'H&H Dao tao', CHONG_BAM_LAI = 60 * 1000;
+  var THU = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
+  function err(m) { return new Error(m); }
+  function p2(n) { return (n < 10 ? '0' : '') + n; }
+  function keyOf(d) { return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()); }
+  function fromKey(k) { var x = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(k || '')); if (!x) throw err('Ngày không hợp lệ.'); return new Date(+x[1], x[2] - 1, +x[3]); }
+  function hm(ms) { var d = new Date(ms); return d.getHours() + ':' + p2(d.getMinutes()); }
+  function r2(x) { return Math.round(x * 100) / 100; }
+  function normIp(s) { return String(s || '').trim().toLowerCase(); }
+  function cfg() {
+    var c = io.cfg() || {};
+    return { wifiTen: c.wifiTen || WIFI_MAC_DINH, ips: (c.ips || []).map(normIp).filter(Boolean), khoa: c.khoa !== false, thietBi: c.thietBi || {} };
+  }
+  function staffOf(ma) {
+    var s = io.staff().filter(function (x) { return x.ma === ma; })[0];
+    if (!s) throw err('Không tìm thấy nhân viên. Bấm “Đổi tên” và chọn lại tên của bạn.');
+    return s;
+  }
+  function valid(r) { return r.hopLe && !r.huy; }
+  /* Ghép các lần chấm trong 1 ngày thành từng đoạn Vào → Ra */
+  function segments(list, nowMs) {
+    var homNay = keyOf(new Date(nowMs));
+    var segs = [], open = null;
+    list.slice().sort(function (a, b) { return a.luc - b.luc; }).forEach(function (r) {
+      if (r.loai === 'VAO') { if (open) segs.push({ vao: open, ra: null, gio: 0, thieuRa: true }); open = r; }
+      else if (open) { segs.push({ vao: open, ra: r, gio: r2((r.luc - open.luc) / 36e5) }); open = null; }
+      else segs.push({ vao: null, ra: r, gio: 0, thieuVao: true });
+    });
+    if (open) segs.push(keyOf(new Date(open.luc)) === homNay
+      ? { vao: open, ra: null, gio: 0, dangLam: true, phutDaLam: Math.max(0, Math.round((nowMs - open.luc) / 6e4)) }
+      : { vao: open, ra: null, gio: 0, thieuRa: true });
+    return segs;
+  }
+  function pub(r) { return r ? { id: r.id, luc: r.luc, gio: hm(r.luc), ghiChu: r.ghiChu || '', tay: r.ip === 'tay' } : null; }
+  function pubSeg(s) { return { vao: pub(s.vao), ra: pub(s.ra), gio: s.gio, dangLam: !!s.dangLam, phutDaLam: s.phutDaLam || 0, thieuRa: !!s.thieuRa, thieuVao: !!s.thieuVao }; }
+  function rowsOn(ma, k) { return io.rows().filter(function (r) { return r.ma === ma && keyOf(new Date(r.luc)) === k && valid(r); }); }
+
+  function status(a) {
+    var s = staffOf(a.ma), c = cfg(), now = io.now(), k = keyOf(now), ip = normIp(a.ip);
+    var today = rowsOn(s.ma, k), segs = segments(today, now.getTime());
+    var last = today.slice().sort(function (x, y) { return y.luc - x.luc; })[0];
+    var bound = c.thietBi[s.ma], chuMay = null;
+    Object.keys(c.thietBi).forEach(function (m) { if (m !== s.ma && c.thietBi[m] === a.thietBi) chuMay = m; });
+    var mon = new Date(now.getFullYear(), now.getMonth(), now.getDate() - (now.getDay() + 6) % 7), tuan = [], all = io.rows();
+    for (var i = 0; i < 7; i++) {
+      var d = new Date(mon.getFullYear(), mon.getMonth(), mon.getDate() + i), dk = keyOf(d);
+      var g = segments(all.filter(function (r) { return r.ma === s.ma && valid(r) && keyOf(new Date(r.luc)) === dk; }), now.getTime())
+        .reduce(function (t, x) { return t + x.gio; }, 0);
+      tuan.push({ ngay: dk, thu: THU[d.getDay()], dm: d.getDate() + '/' + (d.getMonth() + 1), gio: r2(g), homNay: dk === k });
+    }
+    return {
+      ma: s.ma, ten: s.ten, wifiTen: c.wifiTen, daCaiDat: c.ips.length > 0, dungWifi: c.ips.indexOf(ip) >= 0,
+      khoa: c.khoa, mayOk: !c.khoa || ((!bound || bound === a.thietBi) && !chuMay), chuMay: chuMay ? staffOf(chuMay).ten : '',
+      tiepTheo: last && last.loai === 'VAO' ? 'RA' : 'VAO', homNay: segs.map(pubSeg),
+      gioHomNay: r2(segs.reduce(function (t, x) { return t + x.gio; }, 0)), tuan: tuan,
+      tongTuan: r2(tuan.reduce(function (t, x) { return t + x.gio; }, 0)), luc: now.getTime()
+    };
+  }
+
+  function punch(a) {
+    return io.lock(function () {
+      var s = staffOf(a.ma), c = cfg(), now = io.now(), ip = normIp(a.ip);
+      if (!c.ips.length) throw err('Quản lý chưa cài Wi-Fi chấm công. Nhờ quản lý vào Quản lý → Chấm công → Cài đặt Wi-Fi.');
+      if (!ip) throw err('Không kiểm tra được mạng. Kiểm tra lại kết nối Wi-Fi rồi thử lại.');
+      if (c.ips.indexOf(ip) < 0) {
+        io.append({ id: io.newId(), luc: now.getTime(), ma: s.ma, ten: s.ten, loai: 'CHAN', ip: ip, hopLe: false, thietBi: a.thietBi || '', ghiChu: 'Ngoài Wi-Fi quán' });
+        throw err('Bạn chưa kết nối Wi-Fi “' + c.wifiTen + '”. Hãy bật Wi-Fi, chọn mạng “' + c.wifiTen + '”, tắt 4G / VPN rồi thử lại.');
+      }
+      if (c.khoa) {
+        if (!a.thietBi) throw err('Không nhận diện được điện thoại. Tải lại trang rồi thử lại.');
+        var bound = c.thietBi[s.ma];
+        var other = Object.keys(c.thietBi).filter(function (m) { return m !== s.ma && c.thietBi[m] === a.thietBi; })[0];
+        if (other) throw err('Điện thoại này đã đăng ký chấm công cho ' + staffOf(other).ten + '. Mỗi người chấm trên điện thoại của mình.');
+        if (bound && bound !== a.thietBi) throw err('Đây không phải điện thoại bạn đã đăng ký chấm công. Nếu bạn đổi máy, nhờ quản lý bấm “Gỡ máy” cho bạn.');
+        if (!bound) { c.thietBi[s.ma] = a.thietBi; io.saveCfg({ wifiTen: c.wifiTen, ips: c.ips, khoa: c.khoa, thietBi: c.thietBi }); }
+      }
+      var today = rowsOn(s.ma, keyOf(now)).sort(function (x, y) { return y.luc - x.luc; });
+      if (today[0] && now.getTime() - today[0].luc < CHONG_BAM_LAI) throw err('Bạn vừa chấm công lúc ' + hm(today[0].luc) + '. Đợi 1 phút nếu muốn chấm lại.');
+      var loai = today[0] && today[0].loai === 'VAO' ? 'RA' : 'VAO';
+      io.append({ id: io.newId(), luc: now.getTime(), ma: s.ma, ten: s.ten, loai: loai, ip: ip, hopLe: true, thietBi: a.thietBi || '', ghiChu: '' });
+      var st = status(a); st.vuaCham = { loai: loai, gio: hm(now.getTime()) };
+      return st;
+    });
+  }
+
+  function range(a) {
+    var tu = fromKey(a.tu), den = fromKey(a.den);
+    if (den < tu || (den - tu) / 864e5 > 62) throw err('Khoảng ngày không hợp lệ (tối đa 2 tháng).');
+    return { tu: tu, den: new Date(den.getFullYear(), den.getMonth(), den.getDate() + 1) };
+  }
+  function admin(a) {
+    io.auth(a.token);
+    var rg = range(a), c = cfg(), now = io.now(), staff = io.staff();
+    var rows = io.rows().filter(function (r) { return r.luc >= rg.tu.getTime() && r.luc < rg.den.getTime(); });
+    var by = {};
+    rows.filter(function (r) { return r.loai !== 'CHAN'; }).forEach(function (r) { var k = keyOf(new Date(r.luc)) + '|' + r.ma; (by[k] = by[k] || []).push(r); });
+    var ngay = Object.keys(by).sort().reverse().map(function (k) {
+      var p = k.split('|'), list = by[k], segs = segments(list.filter(valid), now.getTime()), d = fromKey(p[0]);
+      return { ngay: p[0], nhan: THU[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1), ma: p[1], ten: list[0].ten,
+        segs: segs.map(pubSeg), gio: r2(segs.reduce(function (t, x) { return t + x.gio; }, 0)),
+        tatCa: list.sort(function (x, y) { return x.luc - y.luc; }).map(function (r) { return { id: r.id, gio: hm(r.luc), loai: r.loai, huy: !!r.huy, tay: r.ip === 'tay', ghiChu: r.ghiChu || '' }; }) };
+    });
+    var tong = {};
+    ngay.forEach(function (n) { var t = tong[n.ma] = tong[n.ma] || { ma: n.ma, ten: n.ten, gio: 0, soNgay: 0, loi: 0 }; t.gio = r2(t.gio + n.gio); t.soNgay++; n.segs.forEach(function (s) { if (s.thieuRa || s.thieuVao) t.loi++; }); });
+    var dangLam = [];
+    staff.forEach(function (s) { var sg = segments(rowsOn(s.ma, keyOf(now)), now.getTime()); var o = sg.filter(function (x) { return x.dangLam; })[0]; if (o) dangLam.push({ ma: s.ma, ten: s.ten, tu: hm(o.vao.luc), phut: o.phutDaLam }); });
+    return {
+      cfg: { wifiTen: c.wifiTen, ips: c.ips, khoa: c.khoa },
+      staff: staff.map(function (s) { return { ma: s.ma, ten: s.ten, coMay: !!c.thietBi[s.ma] }; }),
+      ngay: ngay, tong: Object.keys(tong).map(function (k) { return tong[k]; }).sort(function (x, y) { return y.gio - x.gio; }),
+      chan: rows.filter(function (r) { return r.loai === 'CHAN'; }).sort(function (x, y) { return y.luc - x.luc; }).slice(0, 50)
+        .map(function (r) { var d = new Date(r.luc); return { ten: r.ten, luc: THU[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth() + 1) + ' ' + hm(r.luc), ip: r.ip }; }),
+      dangLam: dangLam, tongGio: r2(ngay.reduce(function (t, n) { return t + n.gio; }, 0))
+    };
+  }
+
+  return {
+    ccStatus: status,
+    ccPunch: punch,
+    ccAdmin: admin,
+    ccSaveCfg: function (a) {
+      io.auth(a.token);
+      return io.lock(function () {
+        var c = cfg(), ips = [];
+        (a.ips || []).map(normIp).forEach(function (x) {
+          if (!/^[0-9a-f.:]{3,45}$/.test(x)) throw err('Địa chỉ IP không hợp lệ: ' + x);
+          if (ips.indexOf(x) < 0) ips.push(x);
+        });
+        var ten = String(a.wifiTen || '').trim().slice(0, 60) || WIFI_MAC_DINH;
+        io.saveCfg({ wifiTen: ten, ips: ips, khoa: a.khoa !== false, thietBi: c.thietBi });
+        return { wifiTen: ten, ips: ips, khoa: a.khoa !== false };
+      });
+    },
+    ccResetDevice: function (a) {
+      io.auth(a.token);
+      return io.lock(function () { var c = cfg(); delete c.thietBi[a.ma]; io.saveCfg(c); return { ok: true }; });
+    },
+    ccAddManual: function (a) {
+      io.auth(a.token);
+      return io.lock(function () {
+        var s = staffOf(a.ma), d = fromKey(a.ngay), t = /^(\d{1,2}):(\d{2})$/.exec(String(a.gio || ''));
+        if (!t || +t[1] > 23 || +t[2] > 59) throw err('Giờ không hợp lệ, ví dụ 7:30.');
+        if (a.loai !== 'VAO' && a.loai !== 'RA') throw err('Chọn Vào hoặc Ra.');
+        var luc = new Date(d.getFullYear(), d.getMonth(), d.getDate(), +t[1], +t[2]).getTime();
+        io.append({ id: io.newId(), luc: luc, ma: s.ma, ten: s.ten, loai: a.loai, ip: 'tay', hopLe: true, thietBi: '', ghiChu: ('Quản lý thêm ' + (a.ghiChu || '')).trim() });
+        return { ok: true };
+      });
+    },
+    ccVoid: function (a) {
+      io.auth(a.token);
+      return io.lock(function () { io.setHuy(a.id, !!a.huy); return { ok: true }; });
+    }
+  };
+}
+
+/* ===== Chấm công Wi-Fi — giao diện ===== */
+var CC_DEMO = null;
+if (!IS_GAS) CC_DEMO = lanhChamCongCore((function () {
+  var c = { wifiTen: 'H&H Dao tao', ips: ['demo-wifi'], khoa: true, thietBi: {} }, rows = [], seq = 1;
+  function staff() { var d = new Date(); return DEMO.getPublicData({ m: d.getMonth() + 1, y: d.getFullYear() }).staff.map(function (s) { return { ma: s.ma, ten: s.ten }; }); }
+  var ss = staff(), t = new Date();
+  for (var back = 1; back <= 6; back++) {
+    var d = new Date(t.getFullYear(), t.getMonth(), t.getDate() - back); if (d.getDay() === 0) continue;
+    ss.slice(0, 4).forEach(function (s, i) {
+      var v = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 5 + (i % 2) * 4, 50 + i * 3), r = new Date(v.getTime() + (3 + (i % 3) * .5) * 36e5 + i * 6e4);
+      rows.push({ id: 'x' + seq++, luc: v.getTime(), ma: s.ma, ten: s.ten, loai: 'VAO', ip: 'demo-wifi', hopLe: true, thietBi: 'demo-' + s.ma, ghiChu: '' });
+      if (!(back === 2 && i === 3)) rows.push({ id: 'x' + seq++, luc: r.getTime(), ma: s.ma, ten: s.ten, loai: 'RA', ip: 'demo-wifi', hopLe: true, thietBi: 'demo-' + s.ma, ghiChu: '' });
+    });
+  }
+  ss.slice(1, 3).forEach(function (s) { c.thietBi[s.ma] = 'demo-' + s.ma; });
+  rows.push({ id: 'x' + seq++, luc: t.getTime() - 50 * 6e4, ma: ss[1].ma, ten: ss[1].ten, loai: 'VAO', ip: 'demo-wifi', hopLe: true, thietBi: 'demo-' + ss[1].ma, ghiChu: '' });
+  rows.push({ id: 'x' + seq++, luc: t.getTime() - 26 * 36e5, ma: ss[4].ma, ten: ss[4].ten, loai: 'CHAN', ip: '113.161.42.7', hopLe: false, thietBi: '', ghiChu: 'Ngoài Wi-Fi quán' });
+  return {
+    now: function () { return new Date(); }, newId: function () { return 'd' + seq++; }, lock: function (f) { return f(); },
+    auth: function (tk) { var r = DEMO.whoAmI({ token: tk }).vaiTro; if (!r) throw new Error('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.'); return r; },
+    staff: staff, cfg: function () { return JSON.parse(JSON.stringify(c)); }, saveCfg: function (o) { c = JSON.parse(JSON.stringify(o)); },
+    rows: function () { return rows.map(function (r) { return Object.assign({}, r); }); },
+    append: function (r) { rows.push(Object.assign({}, r)); },
+    setHuy: function (id, h) { rows.forEach(function (r) { if (r.id === id) r.huy = h; }); }
+  };
+})());
+function ccCall(name, args) {
+  args = args || {};
+  if (IS_GAS) return new Promise(function (res, rej) {
+    google.script.run.withSuccessHandler(function (s) { var r = JSON.parse(s); r.ok ? res(r.data) : rej(new Error(r.loi)); })
+      .withFailureHandler(function (e) { rej(new Error((e && e.message) || 'Không kết nối được máy chủ')); }).chamCongApi(name, JSON.stringify(args));
+  });
+  return new Promise(function (res, rej) { setTimeout(function () { try { res(JSON.parse(JSON.stringify(CC_DEMO[name](JSON.parse(JSON.stringify(args)))))); } catch (e) { rej(e); } }, 220); });
+}
+
+/* IP công cộng của mạng đang dùng (Wi-Fi quán sẽ ra cùng 1 IP) */
+var ccIpCache = null;
+function ccGetIp(fresh) {
+  if (!fresh && ccIpCache && Date.now() - ccIpCache.t < 30000) return Promise.resolve(ccIpCache.ip);
+  function get(url, json) {
+    var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null, tm = setTimeout(function () { if (ctl) ctl.abort(); }, 6000);
+    return fetch(url, { cache: 'no-store', signal: ctl ? ctl.signal : undefined }).then(function (r) { clearTimeout(tm); if (!r.ok) throw new Error(); return json ? r.json().then(function (j) { return j.ip; }) : r.text(); })
+      .then(function (ip) { ip = String(ip || '').trim(); if (!/^[0-9a-fA-F.:]{3,45}$/.test(ip)) throw new Error(); return ip; });
+  }
+  return get('https://api.ipify.org?format=json', true).catch(function () { return get('https://ipv4.icanhazip.com/', false); })
+    .catch(function () { if (!IS_GAS) return 'demo-wifi'; throw new Error('Không kiểm tra được mạng. Kiểm tra lại kết nối Wi-Fi rồi thử lại.'); })
+    .then(function (ip) { ccIpCache = { ip: ip, t: Date.now() }; return ip; });
+}
+function ccDevice() {
+  var d = LS.get('lanh_dev');
+  if (!d) { d = 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10); LS.set('lanh_dev', d); }
+  return d;
+}
+function gioTxt(g) { var h = Math.floor(g + 1e-9), m = Math.round((g - h) * 60); return (h ? h + ' giờ ' : '') + (m || !h ? m + ' phút' : '').trim(); }
+function phutTxt(p) { return gioTxt(p / 60); }
+
+/* ---------- Màn chấm công của nhân viên ---------- */
+var cc = { st: null, busy: false, ad: { kieu: 'ngay', d: new Date() }, adData: null, myIp: '' };
+var WIFI_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.3a9.5 9.5 0 0 1 13 0M8.6 15.5a5 5 0 0 1 6.8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="19" r="1.6" fill="currentColor"/></svg>';
+function ccShow() {
+  mode = 'cc';
+  $('#mCC').setAttribute('aria-pressed', 'true');
+  ['mStaff', 'mKho', 'mAdmin'].forEach(function (id) { $('#' + id).setAttribute('aria-pressed', 'false'); });
+  ['staff', 'kho', 'admin'].forEach(function (id) { $('#' + id).hidden = true; });
+  $('#bar').hidden = true; document.body.classList.remove('has-bar');
+  $('#cc').hidden = false; renderCC(); window.scrollTo(0, 0);
+}
+function renderCC() {
+  var el = $('#cc');
+  if (!st.me) {
+    el.innerHTML = '<div class="loading">Đang tải…</div>';
+    call('getPublicData', { m: CUR.m, y: CUR.y }).then(function (v) {
+      el.innerHTML = '<section class="pick"><h1>Bạn là ai?</h1><p class="muted">Chạm vào tên của bạn để chấm công. Lần sau web tự nhớ.</p><div class="names">' +
+        v.staff.map(function (s) { return '<button data-me="' + esc(s.ma) + '"><span class="av">' + esc(initials(s.ten)) + '</span><b>' + esc(s.ten) + '</b></button>'; }).join('') + '</div></section>';
+      $$('[data-me]', el).forEach(function (b) { b.onclick = function () { st.me = b.dataset.me; LS.set('lanh_me', st.me); renderCC(); }; });
+    }).catch(function (e) { el.innerHTML = '<div class="empty">' + esc(e.message) + '</div>'; });
+    return;
+  }
+  if (!cc.st || cc.st.ma !== st.me) el.innerHTML = '<div class="loading">Đang kiểm tra Wi-Fi…</div>';
+  ccLoad(false);
+}
+function ccLoad(fresh) {
+  var el = $('#cc'), me = st.me;
+  return ccGetIp(fresh).then(function (ip) { return ccCall('ccStatus', { ma: me, ip: ip, thietBi: ccDevice() }); }, function (e) { return { netErr: e.message }; })
+    .then(function (s) {
+      if (mode !== 'cc') return;
+      if (s.netErr) { if (cc.st) { cc.st.dungWifi = false; cc.st.netErr = s.netErr; drawCC(); } else el.innerHTML = '<div class="panel empty">' + esc(s.netErr) + '<br><br><button class="btn pri" id="ccRetry">Thử lại</button></div>'; var rb = $('#ccRetry'); if (rb) rb.onclick = function () { ccLoad(true); }; return; }
+      cc.st = s; drawCC();
+    }).catch(function (e) {
+      if (/Không tìm thấy nhân viên/.test(e.message)) { st.me = null; LS.set('lanh_me', null); return renderCC(); }
+      el.innerHTML = '<div class="panel empty">' + esc(e.message) + '<br><br><button class="btn" id="ccRetry">Thử lại</button></div>'; $('#ccRetry').onclick = function () { ccLoad(true); };
+    });
+}
+function drawCC() {
+  var s = cc.st, el = $('#cc'), vao = s.tiepTheo === 'VAO';
+  var net = !s.daCaiDat ? ['warn', 'Chưa cài Wi-Fi chấm công', 'Nhờ quản lý vào <b>Quản lý → Chấm công</b> để cài mạng Wi-Fi của quán.']
+    : s.netErr ? ['bad', 'Không kiểm tra được mạng', esc(s.netErr)]
+    : s.dungWifi ? ['ok', 'Đã kết nối Wi-Fi “' + esc(s.wifiTen) + '”', 'Bạn có thể chấm công.']
+    : ['bad', 'Chưa kết nối Wi-Fi “' + esc(s.wifiTen) + '”', 'Mở <b>Cài đặt → Wi-Fi</b>, chọn <b>' + esc(s.wifiTen) + '</b>, tắt 4G / VPN rồi bấm <b>Kiểm tra lại</b>.'];
+  var may = s.khoa && !s.mayOk ? '<div class="cc-alert">' + (s.chuMay ? 'Điện thoại này đã đăng ký chấm công cho <b>' + esc(s.chuMay) + '</b>. Mỗi người chấm trên điện thoại của mình.' : 'Đây không phải điện thoại bạn đã đăng ký. Nếu bạn đổi máy, nhờ quản lý bấm <b>Gỡ máy</b> cho bạn.') + '</div>' : '';
+  var can = s.daCaiDat && s.dungWifi && s.mayOk && !s.netErr;
+  var dl = s.homNay.filter(function (x) { return x.dangLam; })[0];
+  var h = '<div class="who-bar"><span class="av">' + esc(initials(s.ten)) + '</span><b>' + esc(s.ten) + '</b><button class="lnk" id="ccChg">Đổi tên</button></div>' +
+    '<div class="cc-grid"><section class="panel cc-main">' +
+    '<div class="cc-time"><div class="cc-clock num" id="ccClock"></div><div class="muted" id="ccDate"></div></div>' +
+    '<div class="cc-net ' + net[0] + '" role="status"><span class="cc-wi">' + WIFI_ICON + '</span><div><span class="t">' + net[1] + '</span><span class="d">' + net[2] + '</span></div>' +
+    '<button class="btn ghost" id="ccRe" title="Kiểm tra lại mạng">Kiểm tra lại</button></div>' + may +
+    '<button class="cc-btn ' + (vao ? 'vao' : 'ra') + '" id="ccGo"' + (can ? '' : ' disabled') + '><span class="cc-bi">' + (vao ? '→' : '←') + '</span>' + (vao ? 'Vào ca' : 'Ra ca') + '<small>' + (can ? (vao ? 'Bấm khi bắt đầu làm' : 'Bấm khi kết thúc ca') : 'Cần kết nối Wi-Fi quán') + '</small></button>' +
+    (dl ? '<div class="cc-now"><span class="dot"></span>Đang trong ca từ <b>' + dl.vao.gio + '</b> · đã làm ' + phutTxt(dl.phutDaLam) + '</div>' : '') +
+    '</section><div class="cc-side"><section class="panel cc-today"><div class="cc-h"><h3>Hôm nay</h3><span class="num"><b>' + gioTxt(s.gioHomNay) + '</b></span></div>' +
+    (s.homNay.length ? '<ul class="cc-tl">' + s.homNay.map(function (x) {
+      return '<li><span class="cc-pt in">' + (x.vao ? x.vao.gio : '—') + '</span><span class="cc-ln"></span><span class="cc-pt out">' + (x.ra ? x.ra.gio : x.dangLam ? 'đang làm' : '—') + '</span>' +
+        '<span class="cc-g">' + (x.ra && x.vao ? gioTxt(x.gio) : x.thieuVao ? 'thiếu giờ vào' : x.thieuRa ? 'quên ra ca' : '') + '</span></li>';
+    }).join('') + '</ul>' : '<p class="muted small" style="margin:0">Chưa chấm công hôm nay.</p>') + '</section>' +
+    '<section class="panel cc-week"><div class="cc-h"><h3>Tuần này</h3><span class="num"><b>' + gioTxt(s.tongTuan) + '</b></span></div><div class="cc-bars">' +
+    s.tuan.map(function (d) { var mx = Math.max.apply(null, s.tuan.map(function (x) { return x.gio; }).concat([4])); return '<div class="' + (d.homNay ? 'td' : '') + '" title="' + d.dm + ': ' + gioTxt(d.gio) + '"><span class="v num">' + (d.gio ? String(d.gio).replace('.', ',') : '') + '</span><span class="b"><i style="height:' + Math.round(d.gio / mx * 100) + '%"></i></span><span class="l">' + d.thu + '</span></div>'; }).join('') +
+    '</div></section></div></div>';
+  el.innerHTML = h; ccTick();
+  $('#ccChg').onclick = function () { st.me = null; cc.st = null; LS.set('lanh_me', null); renderCC(); };
+  $('#ccRe').onclick = function () { this.disabled = true; this.textContent = 'Đang kiểm tra…'; ccLoad(true); };
+  $('#ccGo').onclick = ccPunch;
+}
+function ccPunch() {
+  if (cc.busy) return; cc.busy = true;
+  var b = $('#ccGo'); b.disabled = true; b.classList.add('busy');
+  ccGetIp(true).then(function (ip) { return ccCall('ccPunch', { ma: st.me, ip: ip, thietBi: ccDevice() }); }).then(function (s) {
+    cc.busy = false; cc.st = s; drawCC();
+    var v = s.vuaCham.loai === 'VAO';
+    openModal('<div class="done ok"><div class="big-ic">✓</div><h2>' + (v ? 'Đã vào ca' : 'Đã ra ca') + ' lúc ' + s.vuaCham.gio + '</h2><p class="muted">' +
+      (v ? 'Chúc ' + esc(shortName(s.ten)) + ' làm việc vui vẻ! Nhớ bấm <b>Ra ca</b> khi về.' : 'Hôm nay bạn đã làm <b>' + gioTxt(s.gioHomNay) + '</b>. Cảm ơn bạn!') + '</p></div><button class="btn pri big" data-close>Xong</button>');
+  }).catch(function (e) {
+    cc.busy = false; ccLoad(true);
+    var wifi = /Wi-Fi|mạng/.test(e.message);
+    openModal('<div class="done warn"><div class="big-ic">!</div><h2>Chưa chấm được công</h2><p>' + esc(e.message) + '</p></div>' +
+      (wifi ? '<ol class="steps"><li><span><span class="t">Bật Wi-Fi</span><span class="d">Vào Cài đặt → Wi-Fi trên điện thoại.</span></span></li><li><span><span class="t">Chọn “' + esc(cc.st ? cc.st.wifiTen : 'H&H Dao tao') + '”</span><span class="d">Đợi đến khi điện thoại báo đã kết nối.</span></span></li><li><span><span class="t">Tắt 4G và VPN</span><span class="d">Rồi quay lại bấm chấm công.</span></span></li></ol>' : '') +
+      '<button class="btn pri big" data-close>Đã hiểu</button>');
+  });
+}
+var ccTimer = null;
+function ccTick() {
+  var c = $('#ccClock'); if (!c) return;
+  var d = new Date(); c.textContent = d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2) + ':' + ('0' + d.getSeconds()).slice(-2);
+  $('#ccDate').textContent = THU_DAI[d.getDay()] + ', ' + fullDate(d);
+  if (!ccTimer) ccTimer = setInterval(function () { if (mode === 'cc') ccTick(); }, 1000);
+}
+
+/* ---------- Tab Quản lý → Chấm công ---------- */
+var _renderAdmin = renderAdmin;
+renderAdmin = function () {
+  var want = ad.tab === 'chamcong';
+  if (want) ad.tab = 'duyet';
+  _renderAdmin();
+  var nav = $('#admin .tabs'); if (!nav || !ad.token) return;
+  var b = document.createElement('button'); b.setAttribute('role', 'tab'); b.dataset.t = 'chamcong'; b.textContent = 'Chấm công';
+  var set = $('[data-t="caidat"]', nav); nav.insertBefore(b, set);
+  b.onclick = function () { ad.tab = 'chamcong'; renderAdmin(); };
+  if (want) { ad.tab = 'chamcong'; $$('[data-t]', nav).forEach(function (x) { x.setAttribute('aria-selected', x === b); }); tabChamCong(); }
+};
+function ccRange() {
+  var a = cc.ad, d = a.d, k = function (x) { return x.getFullYear() + '-' + ('0' + (x.getMonth() + 1)).slice(-2) + '-' + ('0' + x.getDate()).slice(-2); };
+  if (a.kieu === 'ngay') return { tu: k(d), den: k(d), nhan: (isoOf(d) === isoOf(new Date()) ? 'Hôm nay · ' : THU_DAI[d.getDay()] + ' · ') + dmOf(d) };
+  if (a.kieu === 'tuan') { var m = mondayOf(d), e = addDays(m, 6); return { tu: k(m), den: k(e), nhan: 'Tuần ' + dmOf(m) + ' – ' + dmOf(e) }; }
+  var f = new Date(d.getFullYear(), d.getMonth(), 1), l = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+  return { tu: k(f), den: k(l), nhan: 'Tháng ' + (d.getMonth() + 1) + ' / ' + d.getFullYear() };
+}
+function ccShift(n) {
+  var a = cc.ad, d = a.d;
+  a.d = a.kieu === 'ngay' ? addDays(d, n) : a.kieu === 'tuan' ? addDays(d, 7 * n) : new Date(d.getFullYear(), d.getMonth() + n, 1);
+  tabChamCong();
+}
+function tabChamCong() {
+  var el = $('#ab'), r = ccRange();
+  if (!cc.adData) el.innerHTML = '<div class="loading">Đang tải…</div>';
+  Promise.all([ccCall('ccAdmin', { token: ad.token, tu: r.tu, den: r.den }), ccGetIp(false).catch(function () { return ''; })]).then(function (res) {
+    if (ad.tab !== 'chamcong') return;
+    cc.adData = res[0]; cc.myIp = res[1]; drawCCAdmin(r);
+  }).catch(guard);
+}
+function drawCCAdmin(r) {
+  var d = cc.adData, el = $('#ab'), c = d.cfg, onWifi = cc.myIp && c.ips.indexOf(cc.myIp.toLowerCase()) >= 0;
+  var h = '<div class="head"><div><div class="eyebrow">Chấm công Wi-Fi · ' + esc(c.wifiTen) + '</div><h1>' + esc(r.nhan) + '</h1></div><div class="row">' +
+    '<div class="cc-seg">' + [['ngay', 'Ngày'], ['tuan', 'Tuần'], ['thang', 'Tháng']].map(function (x) { return '<button data-k="' + x[0] + '" aria-pressed="' + (cc.ad.kieu === x[0]) + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+    '<div class="mnav"><button id="apv" aria-label="Trước">‹</button><button id="anx" aria-label="Sau">›</button></div></div></div>';
+  if (!c.ips.length) h += '<div class="cc-setup"><b>Bước đầu tiên: cài Wi-Fi chấm công</b><span>Hãy đứng ở quán, kết nối điện thoại / máy tính này vào Wi-Fi <b>' + esc(c.wifiTen) + '</b>, rồi bấm nút bên cạnh. Nhân viên chỉ chấm công được khi dùng mạng này.</span><button class="btn pri" id="ccAddMine">Dùng mạng đang kết nối</button></div>';
+  h += '<div class="tiles">' +
+    '<div class="panel tile main"><div class="eyebrow">Đang trong ca</div><div class="v num">' + d.dangLam.length + '</div></div>' +
+    '<div class="panel tile"><div class="eyebrow">Nhân viên đã chấm</div><div class="v num">' + d.tong.length + '</div></div>' +
+    '<div class="panel tile"><div class="eyebrow">Tổng giờ công</div><div class="v num">' + String(d.tongGio).replace('.', ',') + ' h</div></div>' +
+    '<div class="panel tile"><div class="eyebrow">Thử chấm ngoài Wi-Fi</div><div class="v num"' + (d.chan.length ? ' style="color:var(--bad)"' : '') + '>' + d.chan.length + '</div></div></div>';
+  if (d.dangLam.length) h += '<div class="cc-live">' + d.dangLam.map(function (x) { return '<span><span class="dot"></span><b>' + esc(x.ten) + '</b> từ ' + x.tu + ' · ' + phutTxt(x.phut) + '</span>'; }).join('') + '</div>';
+  h += '<div class="toolbar"><span class="small muted" style="flex:1;min-width:200px">Bấm vào một dòng để sửa: huỷ lần chấm sai hoặc thêm giờ khi nhân viên quên chấm.</span><button class="btn" id="ccAdd">+ Thêm giờ chấm tay</button></div>';
+  h += d.ngay.length ? '<div class="tscroll"><table class="pay cc-tb"><thead><tr><th>Ngày</th><th>Nhân viên</th><th>Vào</th><th>Ra</th><th class="r">Số giờ</th><th></th></tr></thead><tbody>' +
+    d.ngay.map(function (n, i) {
+      var segs = n.segs.length ? n.segs : [{ vao: null, ra: null, gio: 0 }];
+      return segs.map(function (s, j) {
+        var tag = function (p) { return p ? p.gio + (p.tay ? ' <span class="cc-tag">tay</span>' : '') : '<span class="cc-miss">thiếu</span>'; };
+        return '<tr data-row="' + i + '"' + (j ? ' class="cont"' : '') + '><td>' + (j ? '' : esc(n.nhan)) + '</td><td>' + (j ? '' : '<b>' + esc(n.ten) + '</b>') + '</td><td>' + tag(s.vao) + '</td><td>' + (s.dangLam ? '<span class="cc-on">đang làm</span>' : s.thieuRa ? '<span class="cc-miss">quên ra ca</span>' : tag(s.ra)) + '</td><td class="r num">' + (s.gio ? String(s.gio).replace('.', ',') : '–') + '</td><td class="r">' + (j ? '' : '<button class="btn ghost sm" data-ed="' + i + '">Sửa</button>') + '</td></tr>';
+      }).join('');
+    }).join('') + '</tbody></table></div>' : '<div class="panel empty">Chưa có ai chấm công trong khoảng này.</div>';
+  if (d.tong.length && cc.ad.kieu !== 'ngay') h += '<h3 class="sp-h">Tổng theo nhân viên</h3><div class="tscroll"><table class="pay cc-tb"><thead><tr><th>Nhân viên</th><th class="r">Số ngày</th><th class="r">Tổng giờ</th><th>Cần kiểm tra</th></tr></thead><tbody>' +
+    d.tong.map(function (t) { return '<tr><td><b>' + esc(t.ten) + '</b></td><td class="r num">' + t.soNgay + '</td><td class="r num"><b>' + String(t.gio).replace('.', ',') + '</b></td><td>' + (t.loi ? '<span class="cc-miss">' + t.loi + ' lần thiếu vào/ra</span>' : '<span class="muted">—</span>') + '</td></tr>'; }).join('') + '</tbody></table></div>';
+  if (d.chan.length) h += '<details class="panel cc-det"><summary><b>Lần thử chấm ngoài Wi-Fi (' + d.chan.length + ')</b> <span class="small muted">— nhân viên dùng 4G hoặc mạng khác</span></summary><ul>' + d.chan.map(function (x) { return '<li><b>' + esc(x.ten) + '</b> · ' + esc(x.luc) + ' · <span class="muted">IP ' + esc(x.ip) + '</span></li>'; }).join('') + '</ul></details>';
+  h += '<details class="panel cc-det cc-set"' + (c.ips.length ? '' : ' open') + '><summary><b>Cài đặt Wi-Fi chấm công</b> <span class="small muted">— ' + (c.ips.length ? c.ips.length + ' mạng được phép' : 'chưa cài') + '</span></summary><div class="cc-set-b">' +
+    '<div class="field"><label for="ccTen">Tên Wi-Fi hiển thị cho nhân viên</label><input class="inp" id="ccTen" value="' + esc(c.wifiTen) + '"></div>' +
+    '<div class="field"><label>Địa chỉ IP của Wi-Fi quán</label><div class="cc-ips" id="ccIps">' + (c.ips.length ? c.ips.map(function (ip) { return '<span class="cc-ip num">' + esc(ip) + '<button data-rm="' + esc(ip) + '" aria-label="Bỏ ' + esc(ip) + '">×</button></span>'; }).join('') : '<span class="small muted">Chưa có IP nào.</span>') + '</div>' +
+    '<span class="small muted">Mạng bạn đang dùng: <b class="num">' + esc(cc.myIp || 'không xác định') + '</b>' + (cc.myIp ? (onWifi ? ' · <span style="color:var(--ok)">đã có trong danh sách ✓</span>' : ' · chưa có trong danh sách') : '') + '</span>' +
+    '<div class="row"><button class="btn" id="ccMine"' + (onWifi || !cc.myIp ? ' disabled' : '') + '>+ Thêm mạng đang dùng</button><input class="inp" id="ccIpIn" placeholder="hoặc nhập IP, VD 113.161.42.7" style="flex:1;min-width:160px"><button class="btn" id="ccIpAdd">Thêm</button></div></div>' +
+    '<label class="cc-chk"><input type="checkbox" id="ccKhoa"' + (c.khoa ? ' checked' : '') + '><span><b>Mỗi nhân viên chỉ chấm trên điện thoại của mình</b><span class="small muted">Lần chấm đầu tiên sẽ gắn điện thoại với nhân viên, chống chấm công hộ.</span></span></label>' +
+    '<div class="field"><label>Điện thoại đã gắn</label><div class="cc-devs">' + d.staff.map(function (s) { return '<div><span>' + esc(s.ten) + '</span>' + (s.coMay ? '<button class="btn ghost sm danger" data-rs="' + esc(s.ma) + '">Gỡ máy</button>' : '<span class="small muted">chưa gắn</span>') + '</div>'; }).join('') + '</div></div>' +
+    '<div class="row"><span style="flex:1"></span><button class="btn pri" id="ccSave">Lưu cài đặt</button></div>' +
+    '<p class="small muted" style="margin:0">Lưu ý: nếu nhà mạng đổi IP của Wi-Fi quán (thường khi khởi động lại modem), nhân viên sẽ không chấm được. Khi đó chỉ cần đứng ở quán và bấm “Thêm mạng đang dùng”.</p></div></details>';
+  el.innerHTML = h;
+
+  var ips = c.ips.slice();
+  function drawIps() { $('#ccIps').innerHTML = ips.length ? ips.map(function (ip) { return '<span class="cc-ip num">' + esc(ip) + '<button data-rm="' + esc(ip) + '" aria-label="Bỏ ' + esc(ip) + '">×</button></span>'; }).join('') : '<span class="small muted">Chưa có IP nào.</span>'; bindRm(); }
+  function bindRm() { $$('[data-rm]', el).forEach(function (b) { b.onclick = function () { ips = ips.filter(function (x) { return x !== b.dataset.rm; }); drawIps(); }; }); }
+  function addIp(ip) { ip = String(ip || '').trim().toLowerCase(); if (!ip) return; if (ips.indexOf(ip) < 0) ips.push(ip); drawIps(); }
+  function save(msg) {
+    return ccCall('ccSaveCfg', { token: ad.token, wifiTen: $('#ccTen').value, ips: ips, khoa: $('#ccKhoa').checked }).then(function () { toast(msg || 'Đã lưu cài đặt chấm công'); tabChamCong(); }).catch(guard);
+  }
+  bindRm();
+  $$('.cc-seg [data-k]', el).forEach(function (b) { b.onclick = function () { cc.ad.kieu = b.dataset.k; tabChamCong(); }; });
+  $('#apv').onclick = function () { ccShift(-1); }; $('#anx').onclick = function () { ccShift(1); };
+  $('#ccMine').onclick = function () { addIp(cc.myIp); };
+  $('#ccIpAdd').onclick = function () { addIp($('#ccIpIn').value); $('#ccIpIn').value = ''; };
+  $('#ccIpIn').onkeydown = function (e) { if (e.key === 'Enter') $('#ccIpAdd').click(); };
+  $('#ccSave').onclick = function () { save(); };
+  var am = $('#ccAddMine'); if (am) am.onclick = function () { if (!cc.myIp) return fail(new Error('Không xác định được mạng đang dùng.')); addIp(cc.myIp); save('Đã cài Wi-Fi chấm công'); };
+  $$('[data-rs]', el).forEach(function (b) { b.onclick = function () { ccCall('ccResetDevice', { token: ad.token, ma: b.dataset.rs }).then(function () { toast('Đã gỡ máy. Lần chấm tới sẽ gắn máy mới.'); tabChamCong(); }).catch(guard); }; });
+  $('#ccAdd').onclick = function () { ccManual(); };
+  $$('tr[data-row]', el).forEach(function (tr) { tr.onclick = function () { ccEditDay(d.ngay[+tr.dataset.row]); }; });
+}
+function ccManual(pre) {
+  var d = cc.adData, today = new Date(), k = pre ? pre.ngay : today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+  openModal('<header><div style="flex:1"><div class="eyebrow">Chấm công</div><h2>Thêm giờ chấm tay</h2></div><button class="x" data-close aria-label="Đóng">×</button></header>' +
+    '<p class="small muted" style="margin:0">Dùng khi nhân viên quên chấm hoặc điện thoại hỏng. Dòng này được đánh dấu “tay”.</p>' +
+    '<div class="field"><label for="mNv">Nhân viên</label><select class="inp" id="mNv">' + d.staff.map(function (s) { return '<option value="' + esc(s.ma) + '"' + (pre && pre.ma === s.ma ? ' selected' : '') + '>' + esc(s.ten) + '</option>'; }).join('') + '</select></div>' +
+    '<div class="two"><div class="field"><label for="mNg">Ngày</label><input class="inp" type="date" id="mNg" value="' + k + '"></div><div class="field"><label for="mGi">Giờ</label><input class="inp" type="time" id="mGi" value="' + (pre && pre.gio || '') + '"></div></div>' +
+    '<div class="field"><label>Loại</label><div class="cc-seg wide"><button data-l="VAO" aria-pressed="' + (!pre || pre.loai !== 'RA') + '">Vào ca</button><button data-l="RA" aria-pressed="' + (!!pre && pre.loai === 'RA') + '">Ra ca</button></div></div>' +
+    '<div class="field"><label for="mGc">Lý do (không bắt buộc)</label><input class="inp" id="mGc" placeholder="VD: quên chấm"></div>' +
+    '<button class="btn pri big" id="mOk">Thêm</button>', function (sh) {
+    var loai = pre && pre.loai === 'RA' ? 'RA' : 'VAO';
+    $$('[data-l]', sh).forEach(function (b) { b.onclick = function () { loai = b.dataset.l; $$('[data-l]', sh).forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); }; });
+    $('#mOk', sh).onclick = function () {
+      var g = $('#mGi', sh).value; if (!g) return toast('Chọn giờ', true);
+      this.disabled = true;
+      ccCall('ccAddManual', { token: ad.token, ma: $('#mNv', sh).value, ngay: $('#mNg', sh).value, gio: g.slice(0, 5).replace(/^0(\d)/, '$1'), loai: loai, ghiChu: $('#mGc', sh).value })
+        .then(function () { closeModal(); toast('Đã thêm giờ chấm'); tabChamCong(); }).catch(function (e) { $('#mOk', sh).disabled = false; guard(e); });
+    };
+  });
+}
+function ccEditDay(n) {
+  openModal('<header><div style="flex:1"><div class="eyebrow">' + esc(n.nhan) + '</div><h2>' + esc(n.ten) + '</h2></div><button class="x" data-close aria-label="Đóng">×</button></header>' +
+    '<div class="panel cc-edit">' + n.tatCa.map(function (r) {
+      return '<div class="' + (r.huy ? 'huy' : '') + '"><span class="code ' + (r.loai === 'VAO' ? 'S' : 'C') + '">' + (r.loai === 'VAO' ? 'Vào' : 'Ra') + '</span><b class="num">' + r.gio + '</b>' + (r.tay ? '<span class="cc-tag">tay</span>' : '') +
+        '<span class="small muted" style="flex:1">' + esc(r.ghiChu) + (r.huy ? ' (đã huỷ)' : '') + '</span><button class="btn ghost sm ' + (r.huy ? '' : 'danger') + '" data-v="' + esc(r.id) + '" data-h="' + (r.huy ? 0 : 1) + '">' + (r.huy ? 'Khôi phục' : 'Huỷ') + '</button></div>';
+    }).join('') + '</div>' +
+    '<p class="small muted" style="margin:0">Lần chấm bị huỷ không bị xoá, chỉ không tính giờ. Có thể khôi phục.</p>' +
+    '<div class="row"><button class="btn" id="eAdd">+ Thêm giờ cho ngày này</button><span style="flex:1"></span><button class="btn pri" data-close>Xong</button></div>', function (sh) {
+    $$('[data-v]', sh).forEach(function (b) { b.onclick = function () { b.disabled = true; ccCall('ccVoid', { token: ad.token, id: b.dataset.v, huy: b.dataset.h === '1' }).then(function () { closeModal(); toast(b.dataset.h === '1' ? 'Đã huỷ lần chấm' : 'Đã khôi phục'); tabChamCong(); }).catch(guard); }; });
+    $('#eAdd', sh).onclick = function () { var miss = n.segs.some(function (s) { return s.thieuRa || s.dangLam; }); closeModal(); ccManual({ ma: n.ma, ngay: n.ngay, loai: miss ? 'RA' : 'VAO' }); };
+  });
+}
+
 /* ===== UX: hướng dẫn người mới + phím tắt cho người dùng quen ===== */
 (function () {
   var IC = {
@@ -4306,10 +4820,15 @@ function wkLabelFull(mon) {
   var theme = LS.get('lanh_theme') || 'auto'; applyTheme(theme);
   $('#themeBtn').onclick = function () { theme = THEMES[(THEMES.indexOf(theme) + 1) % 3]; LS.set('lanh_theme', theme); applyTheme(theme); toast('Giao diện: ' + THEME_NAME[theme]); };
   $('#helpBtn').onclick = function () { openHelp(mode); };
-  if (!TOUCH) { $('#mStaff').title = 'Đăng ký ca (phím 1)'; $('#mKho').title = 'Tồn kho (phím 2)'; $('#mAdmin').title = 'Quản lý (phím 3)'; }
+  if (!TOUCH) { $('#mCC').title = 'Chấm công (phím 1)'; $('#mStaff').title = 'Đăng ký ca (phím 2)'; $('#mKho').title = 'Tồn kho (phím 3)'; $('#mAdmin').title = 'Quản lý (phím 4)'; }
 
   /* ---------- Nội dung hướng dẫn ---------- */
   var GUIDE = {
+    cc: { ten: 'Chấm công', tip: 'Kết nối Wi-Fi <b>H&amp;H Dao tao</b> của quán, rồi bấm nút tròn <b>Vào ca</b> khi bắt đầu và <b>Ra ca</b> khi về.', steps: [
+      ['Kết nối Wi-Fi của quán', 'Vào Cài đặt → Wi-Fi, chọn <b>H&amp;H Dao tao</b>. Tắt 4G và VPN. Dùng mạng khác sẽ không chấm được.'],
+      ['Chọn tên của bạn', 'Chỉ lần đầu. Web nhớ tên và gắn với điện thoại của bạn, nên hãy chấm trên máy của mình.'],
+      ['Bấm Vào ca', 'Khung Wi-Fi hiện màu xanh là chấm được. Giờ chấm lấy theo máy chủ, không phụ thuộc giờ điện thoại.'],
+      ['Bấm Ra ca khi về', 'Màn hình cho biết giờ làm hôm nay và cả tuần. Quên chấm thì báo quản lý thêm giúp.']] },
     staff: { ten: 'Đăng ký ca', tip: 'Chọn ca cho từng ngày trong tuần, rồi bấm <b>Gửi đăng ký</b> ở cuối màn hình.', steps: [
       ['Chọn tên của bạn', 'Lần đầu chạm vào tên mình. Web tự nhớ cho lần sau, muốn đổi thì bấm “Đổi tên”.'],
       ['Chọn tuần', 'Dùng nút ‹ › để đổi tuần. Dòng “Hạn chót” cho biết khi nào tuần đó khoá đăng ký.'],
@@ -4327,18 +4846,18 @@ function wkLabelFull(mon) {
       ['Tồn kho · Cài đặt', 'Xem báo cáo kho, danh mục hàng; đặt hạn chót đăng ký, số người tối đa mỗi ca, đổi mật khẩu.']] }
   };
   var LEGEND = '<div class="legend-codes"><span><span class="code S">S</span>Ca sáng</span><span><span class="code C">C</span>Ca trưa</span><span><span class="code HV">HV</span>Học việc</span><span><span class="code P">P</span>Nghỉ phép</span><span><span class="code NL">NL</span>Nghỉ Lễ</span></div>';
-  var KEYS = [['1 · 2 · 3', 'Chuyển Đăng ký ca · Tồn kho · Quản lý'], ['← →', 'Tuần / tháng trước · sau'], ['[ ]', 'Tab Quản lý trước · sau'], ['/', 'Tới ô tìm kiếm'], ['Ctrl + Enter', 'Gửi / Lưu (nút xanh cuối màn hình)'], ['Esc', 'Đóng cửa sổ'], ['?', 'Mở trang hướng dẫn này']];
+  var KEYS = [['1 · 2 · 3 · 4', 'Chuyển Chấm công · Đăng ký ca · Tồn kho · Quản lý'], ['← →', 'Tuần / tháng trước · sau'], ['[ ]', 'Tab Quản lý trước · sau'], ['/', 'Tới ô tìm kiếm'], ['Ctrl + Enter', 'Gửi / Lưu (nút xanh cuối màn hình)'], ['Esc', 'Đóng cửa sổ'], ['?', 'Mở trang hướng dẫn này']];
 
   function helpBody(t) {
     if (t === 'keys') return '<p class="small muted" style="margin:0">Dành cho máy tính, không cần chuột. Phím tắt tạm tắt khi bạn đang gõ trong ô nhập.</p><div class="kb-list">' +
       KEYS.map(function (k) { return '<div><span>' + k[1] + '</span><span>' + k[0].split(' ').map(function (x) { return /^[·+]$/.test(x) ? ' ' + x + ' ' : '<kbd>' + esc(x) + '</kbd>'; }).join('') + '</span></div>'; }).join('') + '</div>';
     var g = GUIDE[t];
     return '<ol class="steps">' + g.steps.map(function (s) { return '<li><span><span class="t">' + s[0] + '</span><span class="d">' + s[1] + '</span></span></li>'; }).join('') + '</ol>' +
-      (t !== 'kho' ? '<div><div class="eyebrow" style="margin-bottom:6px">Ký hiệu ca</div>' + LEGEND + '</div>' : '');
+      (t === 'staff' || t === 'admin' ? '<div><div class="eyebrow" style="margin-bottom:6px">Ký hiệu ca</div>' + LEGEND + '</div>' : '');
   }
   window.openHelp = function (t) {
     t = t || 'staff';
-    var tabs = [['staff', 'Đăng ký ca'], ['kho', 'Tồn kho'], ['admin', 'Quản lý']].concat(TOUCH ? [] : [['keys', 'Phím tắt']]);
+    var tabs = [['cc', 'Chấm công'], ['staff', 'Đăng ký ca'], ['kho', 'Tồn kho'], ['admin', 'Quản lý']].concat(TOUCH ? [] : [['keys', 'Phím tắt']]);
     openModal('<header><div style="flex:1"><div class="eyebrow">Trợ giúp</div><h2>Hướng dẫn sử dụng</h2></div><button class="x" data-close aria-label="Đóng">×</button></header>' +
       '<div class="help-tabs" role="tablist">' + tabs.map(function (x) { return '<button role="tab" data-h="' + x[0] + '" aria-selected="' + (x[0] === t) + '">' + x[1] + '</button>'; }).join('') + '</div>' +
       '<div id="helpBody" style="display:grid;gap:14px">' + helpBody(t) + '</div>' +
@@ -4355,6 +4874,7 @@ function wkLabelFull(mon) {
       '<div><div class="eyebrow">Chào mừng bạn</div><h2>Bạn muốn làm gì hôm nay?</h2></div>' +
       '<p class="muted small" style="margin:0">Chọn một mục để bắt đầu. Bạn có thể mở lại hướng dẫn bất cứ lúc nào bằng nút <b>?</b> ở góc trên.</p>' +
       '<div class="wcards">' +
+      '<button data-w="cc"><span class="wi">📶</span><span><b>Chấm công</b><small>Vào ca / ra ca bằng Wi-Fi H&amp;H Dao tao</small></span><span class="go">›</span></button>' +
       '<button data-w="staff"><span class="wi">📅</span><span><b>Đăng ký ca làm</b><small>Nhân viên chọn ca sáng / trưa cho tuần tới</small></span><span class="go">›</span></button>' +
       '<button data-w="kho"><span class="wi">📦</span><span><b>Kiểm kho, nhập hàng</b><small>Đếm tồn, ghi hàng về, lấy đơn đặt hàng</small></span><span class="go">›</span></button>' +
       '<button data-w="admin"><span class="wi">🔒</span><span><b>Quản lý</b><small>Duyệt ca, lịch tháng, doanh thu, lương</small></span><span class="go">›</span></button>' +
@@ -4378,14 +4898,19 @@ function wkLabelFull(mon) {
 
   /* ---------- Nhớ chế độ & tab dùng gần nhất ---------- */
   var _setMode = setMode;
-  setMode = function (m) { _setMode(m); LS.set('lanh_mode', m); showTip(m); };
+  setMode = function (m) {
+    if (m === 'cc') ccShow(); else { $('#cc').hidden = true; $('#mCC').setAttribute('aria-pressed', 'false'); _setMode(m); }
+    LS.set('lanh_mode', m); showTip(m);
+  };
+  $('#mCC').onclick = function () { setMode('cc'); };
   $('#mStaff').onclick = function () { setMode('staff'); };
   $('#mKho').onclick = function () { setMode('kho'); };
   $('#mAdmin').onclick = function () { setMode('admin'); };
   document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('#admin .tabs [data-t]'); if (b) LS.set('lanh_tab', b.dataset.t); }, true);
-  var lastTab = LS.get('lanh_tab'); if (lastTab && /^(duyet|lich|doanhthu|luong|nhansu|kho|caidat)$/.test(lastTab)) ad.tab = lastTab;
+  var lastTab = LS.get('lanh_tab'); if (lastTab && /^(duyet|lich|doanhthu|luong|nhansu|kho|chamcong|caidat)$/.test(lastTab)) ad.tab = lastTab;
   var lastMode = LS.get('lanh_mode');
-  if (location.hash !== '#quanly' && (lastMode === 'kho' || lastMode === 'admin')) setMode(lastMode); else showTip(mode);
+  if (location.hash === '#chamcong') setMode('cc');
+  else if (location.hash !== '#quanly' && (lastMode === 'cc' || lastMode === 'kho' || lastMode === 'admin')) setMode(lastMode); else showTip(mode);
   if (!LS.get('lanh_seen')) setTimeout(welcome, 400);
 
   /* ---------- Phím tắt ---------- */
@@ -4400,7 +4925,7 @@ function wkLabelFull(mon) {
     if (typing || modalOpen || e.altKey || e.ctrlKey || e.metaKey) return;
     var k = e.key;
     if (k === '?') { e.preventDefault(); openHelp(mode); }
-    else if (k === '1' || k === '2' || k === '3') { e.preventDefault(); setMode(['staff', 'kho', 'admin'][+k - 1]); }
+    else if (k === '1' || k === '2' || k === '3' || k === '4') { e.preventDefault(); setMode(['cc', 'staff', 'kho', 'admin'][+k - 1]); }
     else if (k === 'ArrowLeft' || k === 'ArrowRight') {
       var b = k === 'ArrowLeft' ? (vis('#' + mode + ' #wp') || vis('#' + mode + ' #apv')) : (vis('#' + mode + ' #wn') || vis('#' + mode + ' #anx'));
       if (b) { e.preventDefault(); b.click(); }

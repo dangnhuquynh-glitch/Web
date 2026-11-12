@@ -22,10 +22,15 @@
   var theme = LS.get('lanh_theme') || 'auto'; applyTheme(theme);
   $('#themeBtn').onclick = function () { theme = THEMES[(THEMES.indexOf(theme) + 1) % 3]; LS.set('lanh_theme', theme); applyTheme(theme); toast('Giao diện: ' + THEME_NAME[theme]); };
   $('#helpBtn').onclick = function () { openHelp(mode); };
-  if (!TOUCH) { $('#mStaff').title = 'Đăng ký ca (phím 1)'; $('#mKho').title = 'Tồn kho (phím 2)'; $('#mAdmin').title = 'Quản lý (phím 3)'; }
+  if (!TOUCH) { $('#mCC').title = 'Chấm công (phím 1)'; $('#mStaff').title = 'Đăng ký ca (phím 2)'; $('#mKho').title = 'Tồn kho (phím 3)'; $('#mAdmin').title = 'Quản lý (phím 4)'; }
 
   /* ---------- Nội dung hướng dẫn ---------- */
   var GUIDE = {
+    cc: { ten: 'Chấm công', tip: 'Kết nối Wi-Fi <b>H&amp;H Dao tao</b> của quán, rồi bấm nút tròn <b>Vào ca</b> khi bắt đầu và <b>Ra ca</b> khi về.', steps: [
+      ['Kết nối Wi-Fi của quán', 'Vào Cài đặt → Wi-Fi, chọn <b>H&amp;H Dao tao</b>. Tắt 4G và VPN. Dùng mạng khác sẽ không chấm được.'],
+      ['Chọn tên của bạn', 'Chỉ lần đầu. Web nhớ tên và gắn với điện thoại của bạn, nên hãy chấm trên máy của mình.'],
+      ['Bấm Vào ca', 'Khung Wi-Fi hiện màu xanh là chấm được. Giờ chấm lấy theo máy chủ, không phụ thuộc giờ điện thoại.'],
+      ['Bấm Ra ca khi về', 'Màn hình cho biết giờ làm hôm nay và cả tuần. Quên chấm thì báo quản lý thêm giúp.']] },
     staff: { ten: 'Đăng ký ca', tip: 'Chọn ca cho từng ngày trong tuần, rồi bấm <b>Gửi đăng ký</b> ở cuối màn hình.', steps: [
       ['Chọn tên của bạn', 'Lần đầu chạm vào tên mình. Web tự nhớ cho lần sau, muốn đổi thì bấm “Đổi tên”.'],
       ['Chọn tuần', 'Dùng nút ‹ › để đổi tuần. Dòng “Hạn chót” cho biết khi nào tuần đó khoá đăng ký.'],
@@ -43,18 +48,18 @@
       ['Tồn kho · Cài đặt', 'Xem báo cáo kho, danh mục hàng; đặt hạn chót đăng ký, số người tối đa mỗi ca, đổi mật khẩu.']] }
   };
   var LEGEND = '<div class="legend-codes"><span><span class="code S">S</span>Ca sáng</span><span><span class="code C">C</span>Ca trưa</span><span><span class="code HV">HV</span>Học việc</span><span><span class="code P">P</span>Nghỉ phép</span><span><span class="code NL">NL</span>Nghỉ Lễ</span></div>';
-  var KEYS = [['1 · 2 · 3', 'Chuyển Đăng ký ca · Tồn kho · Quản lý'], ['← →', 'Tuần / tháng trước · sau'], ['[ ]', 'Tab Quản lý trước · sau'], ['/', 'Tới ô tìm kiếm'], ['Ctrl + Enter', 'Gửi / Lưu (nút xanh cuối màn hình)'], ['Esc', 'Đóng cửa sổ'], ['?', 'Mở trang hướng dẫn này']];
+  var KEYS = [['1 · 2 · 3 · 4', 'Chuyển Chấm công · Đăng ký ca · Tồn kho · Quản lý'], ['← →', 'Tuần / tháng trước · sau'], ['[ ]', 'Tab Quản lý trước · sau'], ['/', 'Tới ô tìm kiếm'], ['Ctrl + Enter', 'Gửi / Lưu (nút xanh cuối màn hình)'], ['Esc', 'Đóng cửa sổ'], ['?', 'Mở trang hướng dẫn này']];
 
   function helpBody(t) {
     if (t === 'keys') return '<p class="small muted" style="margin:0">Dành cho máy tính, không cần chuột. Phím tắt tạm tắt khi bạn đang gõ trong ô nhập.</p><div class="kb-list">' +
       KEYS.map(function (k) { return '<div><span>' + k[1] + '</span><span>' + k[0].split(' ').map(function (x) { return /^[·+]$/.test(x) ? ' ' + x + ' ' : '<kbd>' + esc(x) + '</kbd>'; }).join('') + '</span></div>'; }).join('') + '</div>';
     var g = GUIDE[t];
     return '<ol class="steps">' + g.steps.map(function (s) { return '<li><span><span class="t">' + s[0] + '</span><span class="d">' + s[1] + '</span></span></li>'; }).join('') + '</ol>' +
-      (t !== 'kho' ? '<div><div class="eyebrow" style="margin-bottom:6px">Ký hiệu ca</div>' + LEGEND + '</div>' : '');
+      (t === 'staff' || t === 'admin' ? '<div><div class="eyebrow" style="margin-bottom:6px">Ký hiệu ca</div>' + LEGEND + '</div>' : '');
   }
   window.openHelp = function (t) {
     t = t || 'staff';
-    var tabs = [['staff', 'Đăng ký ca'], ['kho', 'Tồn kho'], ['admin', 'Quản lý']].concat(TOUCH ? [] : [['keys', 'Phím tắt']]);
+    var tabs = [['cc', 'Chấm công'], ['staff', 'Đăng ký ca'], ['kho', 'Tồn kho'], ['admin', 'Quản lý']].concat(TOUCH ? [] : [['keys', 'Phím tắt']]);
     openModal('<header><div style="flex:1"><div class="eyebrow">Trợ giúp</div><h2>Hướng dẫn sử dụng</h2></div><button class="x" data-close aria-label="Đóng">×</button></header>' +
       '<div class="help-tabs" role="tablist">' + tabs.map(function (x) { return '<button role="tab" data-h="' + x[0] + '" aria-selected="' + (x[0] === t) + '">' + x[1] + '</button>'; }).join('') + '</div>' +
       '<div id="helpBody" style="display:grid;gap:14px">' + helpBody(t) + '</div>' +
@@ -71,6 +76,7 @@
       '<div><div class="eyebrow">Chào mừng bạn</div><h2>Bạn muốn làm gì hôm nay?</h2></div>' +
       '<p class="muted small" style="margin:0">Chọn một mục để bắt đầu. Bạn có thể mở lại hướng dẫn bất cứ lúc nào bằng nút <b>?</b> ở góc trên.</p>' +
       '<div class="wcards">' +
+      '<button data-w="cc"><span class="wi">📶</span><span><b>Chấm công</b><small>Vào ca / ra ca bằng Wi-Fi H&amp;H Dao tao</small></span><span class="go">›</span></button>' +
       '<button data-w="staff"><span class="wi">📅</span><span><b>Đăng ký ca làm</b><small>Nhân viên chọn ca sáng / trưa cho tuần tới</small></span><span class="go">›</span></button>' +
       '<button data-w="kho"><span class="wi">📦</span><span><b>Kiểm kho, nhập hàng</b><small>Đếm tồn, ghi hàng về, lấy đơn đặt hàng</small></span><span class="go">›</span></button>' +
       '<button data-w="admin"><span class="wi">🔒</span><span><b>Quản lý</b><small>Duyệt ca, lịch tháng, doanh thu, lương</small></span><span class="go">›</span></button>' +
@@ -94,14 +100,19 @@
 
   /* ---------- Nhớ chế độ & tab dùng gần nhất ---------- */
   var _setMode = setMode;
-  setMode = function (m) { _setMode(m); LS.set('lanh_mode', m); showTip(m); };
+  setMode = function (m) {
+    if (m === 'cc') ccShow(); else { $('#cc').hidden = true; $('#mCC').setAttribute('aria-pressed', 'false'); _setMode(m); }
+    LS.set('lanh_mode', m); showTip(m);
+  };
+  $('#mCC').onclick = function () { setMode('cc'); };
   $('#mStaff').onclick = function () { setMode('staff'); };
   $('#mKho').onclick = function () { setMode('kho'); };
   $('#mAdmin').onclick = function () { setMode('admin'); };
   document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('#admin .tabs [data-t]'); if (b) LS.set('lanh_tab', b.dataset.t); }, true);
-  var lastTab = LS.get('lanh_tab'); if (lastTab && /^(duyet|lich|doanhthu|luong|nhansu|kho|caidat)$/.test(lastTab)) ad.tab = lastTab;
+  var lastTab = LS.get('lanh_tab'); if (lastTab && /^(duyet|lich|doanhthu|luong|nhansu|kho|chamcong|caidat)$/.test(lastTab)) ad.tab = lastTab;
   var lastMode = LS.get('lanh_mode');
-  if (location.hash !== '#quanly' && (lastMode === 'kho' || lastMode === 'admin')) setMode(lastMode); else showTip(mode);
+  if (location.hash === '#chamcong') setMode('cc');
+  else if (location.hash !== '#quanly' && (lastMode === 'cc' || lastMode === 'kho' || lastMode === 'admin')) setMode(lastMode); else showTip(mode);
   if (!LS.get('lanh_seen')) setTimeout(welcome, 400);
 
   /* ---------- Phím tắt ---------- */
@@ -116,7 +127,7 @@
     if (typing || modalOpen || e.altKey || e.ctrlKey || e.metaKey) return;
     var k = e.key;
     if (k === '?') { e.preventDefault(); openHelp(mode); }
-    else if (k === '1' || k === '2' || k === '3') { e.preventDefault(); setMode(['staff', 'kho', 'admin'][+k - 1]); }
+    else if (k === '1' || k === '2' || k === '3' || k === '4') { e.preventDefault(); setMode(['cc', 'staff', 'kho', 'admin'][+k - 1]); }
     else if (k === 'ArrowLeft' || k === 'ArrowRight') {
       var b = k === 'ArrowLeft' ? (vis('#' + mode + ' #wp') || vis('#' + mode + ' #apv')) : (vis('#' + mode + ' #wn') || vis('#' + mode + ' #anx'));
       if (b) { e.preventDefault(); b.click(); }
