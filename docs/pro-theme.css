@@ -1,0 +1,123 @@
+/* ===== Lành — Pro theme (Atlassian‑style design tokens) ===== */
+:root{
+  --bg:#F7F8F9; --paper:#FFFFFF; --ink:#172B4D; --ink-2:#626F86; --line:#DCDFE4; --line-2:#EBECF0;
+  --accent:#1F845A; --accent-hover:#216E4E; --accent-soft:#DCFFF1; --on-accent:#FFFFFF;
+  --sang:#A54800; --sang-soft:#FFF3EB; --trua:#0C66E4; --trua-soft:#E9F2FF;
+  --le:#AE2E24; --le-soft:#FFECEB; --hv:#5E4DB2; --hv-soft:#F3F0FF;
+  --ok:#216E4E; --warn:#A54800; --bad:#C9372C; --info-soft:#E9F2FF;
+  --shade:rgba(9,30,66,.12); --scrim:rgba(9,30,66,.54);
+  --e1:0 1px 1px rgba(9,30,66,.25),0 0 1px rgba(9,30,66,.31);
+  --e2:0 8px 12px rgba(9,30,66,.15),0 0 1px rgba(9,30,66,.31);
+  --f-display:'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --r:8px; --r-sm:6px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#1D2125; --paper:#22272B; --ink:#DEE4EA; --ink-2:#9FADBC; --line:#38414A; --line-2:#2C333A;
+  --accent:#4BCE97; --accent-hover:#7EE2B8; --accent-soft:#1C3329; --on-accent:#1D2125;
+  --sang:#FEC195; --sang-soft:#3A2618; --trua:#85B8FF; --trua-soft:#1C2B41;
+  --le:#FD9891; --le-soft:#42221F; --hv:#B8ACF6; --hv-soft:#2B2541;
+  --ok:#7EE2B8; --warn:#FEC195; --bad:#FD9891; --info-soft:#1C2B41;
+  --shade:rgba(0,0,0,.4); --scrim:rgba(0,0,0,.6);
+  --e1:0 1px 1px rgba(3,4,4,.5),0 0 1px rgba(3,4,4,.5);
+  --e2:0 8px 12px rgba(3,4,4,.36),0 0 1px rgba(188,214,240,.12); color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#1D2125; --paper:#22272B; --ink:#DEE4EA; --ink-2:#9FADBC; --line:#38414A; --line-2:#2C333A;
+  --accent:#4BCE97; --accent-hover:#7EE2B8; --accent-soft:#1C3329; --on-accent:#1D2125;
+  --sang:#FEC195; --sang-soft:#3A2618; --trua:#85B8FF; --trua-soft:#1C2B41;
+  --le:#FD9891; --le-soft:#42221F; --hv:#B8ACF6; --hv-soft:#2B2541;
+  --ok:#7EE2B8; --warn:#FEC195; --bad:#FD9891; --info-soft:#1C2B41;
+  --shade:rgba(0,0,0,.4); --scrim:rgba(0,0,0,.6);
+  --e1:0 1px 1px rgba(3,4,4,.5),0 0 1px rgba(3,4,4,.5);
+  --e2:0 8px 12px rgba(3,4,4,.36),0 0 1px rgba(188,214,240,.12); color-scheme:dark }
+
+body{font-size:14.5px;line-height:1.55;letter-spacing:-.003em}
+h1,h2,h3{font-weight:650;letter-spacing:-.012em}
+.wrap{max-width:1200px;padding-inline:24px}
+@media (max-width:640px){.wrap{padding-inline:16px}}
+
+/* App bar */
+.top{background:var(--paper);backdrop-filter:none;border-bottom:1px solid var(--line);box-shadow:0 1px 0 var(--line-2)}
+.top .wrap{padding-block:8px;min-height:60px}
+.brand .logo{width:38px;height:38px;box-shadow:none;border:1px solid var(--line)}
+.brand b{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.brand small{font-size:12px;margin-top:0}
+.modes{background:var(--line-2);border:0;border-radius:var(--r);padding:3px;gap:2px}
+.modes button{border-radius:var(--r-sm);padding:7px 14px;font-size:13.5px;color:var(--ink-2);transition:background .15s,color .15s}
+.modes button:hover{color:var(--ink)}
+.modes button[aria-pressed="true"]{background:var(--paper);color:var(--accent);box-shadow:var(--e1)}
+@media (max-width:640px){.top .wrap{gap:8px}.modes{width:100%}.modes button{flex:1;justify-content:center}}
+.demo{background:var(--info-soft);color:var(--ink);border-bottom:1px solid var(--line);font-size:12.5px;padding:7px 16px}
+.demo::before{content:"i";display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:var(--trua);color:var(--paper);font-weight:700;font-size:11px;margin-right:8px;vertical-align:-2px}
+
+/* Buttons & inputs */
+.btn{border-radius:var(--r-sm);min-height:36px;padding:7px 14px;font-size:14px;font-weight:600;background:var(--paper);border:1px solid var(--line);box-shadow:none;transition:background .15s,border-color .15s,box-shadow .15s}
+.btn:hover{background:var(--line-2);border-color:var(--line)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.pri:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.btn.ghost{background:transparent;border-color:transparent}
+.btn.ghost:hover{background:var(--line-2)}
+.btn.danger{color:var(--bad)}
+.btn.danger:hover{background:var(--le-soft);border-color:transparent}
+.btn.big{min-height:44px}
+.inp,select.inp{border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--paper);min-height:38px;transition:border-color .15s,box-shadow .15s}
+.inp:hover{background:var(--bg)}
+.inp:focus{outline:none;border-color:var(--trua);box-shadow:0 0 0 1px var(--trua);background:var(--paper)}
+:focus-visible{outline:2px solid var(--trua);outline-offset:2px}
+.field label{font-size:12px;font-weight:600;color:var(--ink-2)}
+.lnk{color:var(--trua)!important}
+
+/* Surfaces */
+.panel{border:0;border-radius:var(--r);box-shadow:var(--e1);background:var(--paper)}
+.tscroll{border:0;box-shadow:var(--e1);border-radius:var(--r)}
+.sheet{border-radius:12px 12px 0 0;box-shadow:var(--e2)}
+@media (min-width:700px){.sheet{border-radius:12px}}
+.x{background:transparent;border-radius:var(--r-sm)}
+.x:hover{background:var(--line-2)}
+.toast{border-radius:var(--r)!important;box-shadow:var(--e2)!important}
+
+/* Page header */
+.head{padding-block:24px 16px}
+.head h1{font-size:24px}
+.head h1 em{font-style:normal;color:var(--ink-2);font-weight:500}
+.eyebrow{font-size:11px;letter-spacing:.06em;font-weight:700;color:var(--ink-2)}
+.mnav button{border-radius:var(--r-sm);width:36px;height:36px;background:var(--paper);border:1px solid var(--line)}
+.mnav button:hover{background:var(--line-2)}
+
+/* Tabs (Quản lý) */
+.tabs{gap:4px;border-bottom:2px solid var(--line-2);margin-top:16px}
+.tabs button{padding:10px 12px;font-size:14px;font-weight:600;color:var(--ink-2);border-bottom:2px solid transparent;margin-bottom:-2px;border-radius:var(--r-sm) var(--r-sm) 0 0}
+.tabs button:hover{color:var(--ink);background:var(--line-2)}
+.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent);background:none}
+.role-pill{border-radius:4px!important;text-transform:uppercase;font-size:11px!important;letter-spacing:.04em}
+
+/* Status chips / lozenges */
+.pill{border-radius:4px;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:3px 8px}
+.pill::before{display:none}
+.code{border-radius:4px;font-size:12px}
+.code.HV{background:var(--hv-soft);color:var(--hv)}
+.badge{border-radius:999px}
+
+/* Staff calendar */
+.day,.names button,.seg button{border-radius:var(--r)}
+.names button{background:var(--paper);box-shadow:var(--e1);border:0}
+.names button:hover{box-shadow:var(--e2)}
+.av{background:var(--accent);color:var(--on-accent);font-size:12px}
+
+/* Tables */
+.grid thead th,table.pay th{background:var(--bg);text-transform:uppercase;letter-spacing:.04em;font-size:11px}
+.grid thead th b{font-size:13px;text-transform:none;letter-spacing:0}
+.grid td.HV button{color:var(--hv)}
+table.pay tbody tr:hover td{background:var(--bg)}
+.pay td{border-bottom-color:var(--line-2)}
+
+/* KPI tiles */
+.tile{border-radius:var(--r)}
+.tile .v{font-weight:700;font-size:24px;letter-spacing:-.02em}
+.tile.main{background:linear-gradient(135deg,var(--accent),var(--accent-hover))}
+
+/* Bottom action bar */
+.bar{border-top:1px solid var(--line);box-shadow:0 -4px 16px var(--shade)}
+
+/* Notices */
+.warnbox{border-left:4px solid var(--warn);border-radius:var(--r-sm)}
+.rule{border-radius:var(--r)}
