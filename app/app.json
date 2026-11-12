@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "Lành",
+    "slug": "lanh",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "vn.lanh.lichlam",
+      "buildNumber": "1",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "vn.lanh.lichlam",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "output": "single",
+      "name": "Lành",
+      "shortName": "Lành",
+      "themeColor": "#FFFFFF",
+      "backgroundColor": "#F7F8F9"
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#FFFFFF",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180
+        }
+      ],
+      "expo-web-browser"
+    ],
+    "scheme": "lanh",
+    "backgroundColor": "#FFFFFF",
+    "description": "Lịch làm part-time, chấm công Wi-Fi, tồn kho và quản lý của Lành."
+  }
+}

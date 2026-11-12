@@ -7,6 +7,7 @@ Giao diện web Google Apps Script của Lành: **Đăng ký ca**, **Tồn kho**
 |---|---|
 | `Index.html` | Bản **thiết kế lại** — dán vào file HTML của dự án Apps Script |
 | `ChamCong.gs` | **Mới:** phần máy chủ của chấm công Wi-Fi, thêm thành 1 file mới trong Apps Script |
+| `app/` | **App iOS / Android / máy tính** (Expo) mở web Lành, xem `app/README.md` |
 | `original/Index.html` | Bản gốc lấy từ web app đang chạy (để so sánh / quay lại) |
 | `docs/pro-theme.css` | Lớp giao diện mới (đã nhúng sẵn trong `Index.html`) |
 | `docs/ux.css`, `docs/ux.js` | Lớp trải nghiệm: hướng dẫn, gợi ý, phím tắt, sáng/tối (đã nhúng sẵn) |
