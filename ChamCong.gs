@@ -164,12 +164,37 @@ function lanhChamCongCore(io) {
 var CC_SHEET = 'ChamCong';
 var CC_HEAD = ['ID', 'Thời gian', 'Mã NV', 'Tên', 'Loại', 'IP', 'Hợp lệ', 'Thiết bị', 'Ghi chú', 'Huỷ'];
 
-function ccSpreadsheet_() {
-  var id = PropertiesService.getScriptProperties().getProperty('CC_SHEET_ID');
-  return id ? SpreadsheetApp.openById(id) : SpreadsheetApp.getActiveSpreadsheet();
+/* Tìm Google Sheet để ghi chấm công. Web app không có “sheet đang mở”, nên lưu ID vào Script Properties:
+ * 1) ID đã lưu  2) sheet gắn với script (khi chạy từ trình soạn thảo)  3) hỏi api('adminOverview') lúc quản lý mở tab Chấm công. */
+var CC_NO_SHEET = 'Chưa liên kết Google Sheet cho chấm công. Quản lý hãy mở Quản lý → Chấm công một lần để web tự liên kết.';
+function ccSpreadsheet_(token) {
+  var props = PropertiesService.getScriptProperties(), id = props.getProperty('CC_SHEET_ID');
+  if (id) return SpreadsheetApp.openById(id);
+  var ss = null;
+  try { ss = SpreadsheetApp.getActiveSpreadsheet(); } catch (e) { ss = null; }
+  if (!ss && token) {
+    var url = '';
+    try { url = ccApiCall_('adminOverview', { token: token }).sheetUrl || ''; } catch (e) { url = ''; }
+    var m = /\/d\/([a-zA-Z0-9_-]{20,})/.exec(url);
+    if (m) ss = SpreadsheetApp.openById(m[1]);
+  }
+  if (!ss) return null;
+  props.setProperty('CC_SHEET_ID', ss.getId());
+  return ss;
 }
-function ccSheet_() {
-  var ss = ccSpreadsheet_(), sh = ss.getSheetByName(CC_SHEET);
+/* Chạy hàm này 1 lần trong trình soạn thảo Apps Script nếu muốn liên kết thủ công. */
+function CHAM_CONG_LIEN_KET_SHEET() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  if (!ss) throw new Error('Hãy mở Apps Script từ Google Sheet của Lành (Tiện ích mở rộng → Apps Script) rồi chạy lại.');
+  PropertiesService.getScriptProperties().setProperty('CC_SHEET_ID', ss.getId());
+  ccSheet_(true);
+  Logger.log('Đã liên kết chấm công với: ' + ss.getName());
+}
+var ccToken_ = '';
+function ccSheet_(mustExist) {
+  var ss = ccSpreadsheet_(ccToken_);
+  if (!ss) { if (mustExist) throw new Error(CC_NO_SHEET); return null; }
+  var sh = ss.getSheetByName(CC_SHEET);
   if (!sh) {
     sh = ss.insertSheet(CC_SHEET);
     sh.getRange(1, 1, 1, CC_HEAD.length).setValues([CC_HEAD]).setFontWeight('bold').setBackground('#DCFFF1');
@@ -195,7 +220,9 @@ function ccIo_() {
     saveCfg: function (c) { props.setProperty('CC_CFG', JSON.stringify(c)); },
     rows: function () {
       if (cache) return cache;
-      var sh = ccSheet_(), n = sh.getLastRow() - 1;
+      var sh = ccSheet_(false);
+      if (!sh) return (cache = []);
+      var n = sh.getLastRow() - 1;
       cache = n < 1 ? [] : sh.getRange(2, 1, n, CC_HEAD.length).getValues().filter(function (v) { return v[0]; }).map(function (v) {
         return { id: String(v[0]), luc: (v[1] instanceof Date ? v[1] : new Date(v[1])).getTime(), ma: String(v[2]), ten: String(v[3]), loai: String(v[4]),
           ip: String(v[5]), hopLe: v[6] === true || v[6] === 'TRUE' || v[6] === 'Có', thietBi: String(v[7]), ghiChu: String(v[8]), huy: v[9] === true || v[9] === 'TRUE' || v[9] === 'Huỷ' };
@@ -203,11 +230,11 @@ function ccIo_() {
       return cache;
     },
     append: function (r) {
-      ccSheet_().appendRow([r.id, new Date(r.luc), r.ma, r.ten, r.loai, r.ip, r.hopLe ? 'Có' : 'Không', r.thietBi, r.ghiChu, '']);
+      ccSheet_(true).appendRow([r.id, new Date(r.luc), r.ma, r.ten, r.loai, r.ip, r.hopLe ? 'Có' : 'Không', r.thietBi, r.ghiChu, '']);
       if (cache) cache.push(r);
     },
     setHuy: function (id, huy) {
-      var sh = ccSheet_(), n = sh.getLastRow() - 1; if (n < 1) return;
+      var sh = ccSheet_(true), n = sh.getLastRow() - 1; if (n < 1) return;
       var ids = sh.getRange(2, 1, n, 1).getValues();
       for (var i = 0; i < ids.length; i++) if (String(ids[i][0]) === id) { sh.getRange(i + 2, 10).setValue(huy ? 'Huỷ' : ''); cache = null; return; }
       throw new Error('Không tìm thấy lần chấm công này.');
@@ -217,9 +244,11 @@ function ccIo_() {
 /* Trình duyệt gọi: google.script.run.chamCongApi(tên, JSON) */
 function chamCongApi(name, argsJson) {
   try {
+    var args = JSON.parse(argsJson || '{}');
+    ccToken_ = args.token || '';
     var core = lanhChamCongCore(ccIo_());
     if (!/^cc[A-Z]/.test(name) || typeof core[name] !== 'function') throw new Error('Không có chức năng ' + name);
-    return JSON.stringify({ ok: true, data: core[name](JSON.parse(argsJson || '{}')) });
+    return JSON.stringify({ ok: true, data: core[name](args) });
   } catch (e) {
     return JSON.stringify({ ok: false, loi: (e && e.message) || String(e) });
   }
